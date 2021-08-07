@@ -13,7 +13,7 @@ namespace ElectroShop1.Data
     {
         [Key]
         public int ProductId { get; set; }
-        //[Required]
+        [Required]
         public Guid OwnerId { get; set; }
         [Required]
         [MinLength(2, ErrorMessage = "A mininum of 2 characters needed.")]

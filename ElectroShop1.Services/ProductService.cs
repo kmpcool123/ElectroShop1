@@ -49,7 +49,7 @@ namespace ElectroShop1.Services
                 var query =
                     ctx
                         .Products
-                        //.Where(e => e.OwnerId == _userId) allows not registered users to see products(Allow annonymous not working?)
+                        .Where(e => e.OwnerId == _userId) //allows not registered users to see products(Allow annonymous not working?)
                         .Select(
                             e =>
                                 new ProductListItem

@@ -10,7 +10,7 @@ using System.Web.Mvc;
 
 namespace ElectroShop1.Controllers
 {
-    [AllowAnonymous]
+    [Authorize]
     public class ProductController : Controller
     {
         // GET: Product
