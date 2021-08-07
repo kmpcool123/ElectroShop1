@@ -28,6 +28,7 @@ namespace ElectroShop1.Services
                     Manufacturer = model.Manufacturer,
                     Price = model.Price,
                     ModelNumber = model.ModelNumber,
+                    CategoryId = model.Category,
                     Msrp = model.Msrp,                  
                     CreatedUtc = DateTimeOffset.Now
                 };

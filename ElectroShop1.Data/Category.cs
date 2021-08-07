@@ -10,9 +10,8 @@ using System.Threading.Tasks;
 namespace ElectroShop1.Data
 {
    public class Category
-    {
-        
-            []
+    {       
+            
             // Primary Key
             [Key]
             public int CategoryID { get; set; }

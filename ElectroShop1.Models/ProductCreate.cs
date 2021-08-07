@@ -21,9 +21,12 @@ namespace ElectroShop1.Models
         public string Manufacturer { get; set; }
         [Required]
         public decimal Price { get; set; }
-
+        [Required]
         public decimal Msrp { get; set; }
-        
+        [Required]
         public int ModelNumber { get; set;}
+
+        [Required]
+        public int CategoryID { get; set; }
     }
 }

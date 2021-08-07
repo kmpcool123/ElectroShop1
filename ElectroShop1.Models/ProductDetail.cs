@@ -15,10 +15,13 @@ namespace ElectroShop1.Models
         public string Description { get; set; }
         public string Manufacturer { get; set; }
         public decimal Price { get; set; }
-
+        [Display(Name = "Manufacturer Suggested Retail Price")]
         public decimal Msrp { get; set; }
-
+        [Display(Name = "Model Number")]
         public int ModelNumber { get; set; }
+
+        [Display(Name = "Category")]
+        public int CategoryID { get; set; }
 
         [Display(Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }
