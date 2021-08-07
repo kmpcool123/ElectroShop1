@@ -39,6 +39,6 @@ namespace ElectroShop1.Data
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
 
-        public DateTimeOffset? ModifiedUtc { get; set; }
+        public DateTimeOffset? Modified { get; set; }
     }
 }

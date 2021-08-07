@@ -27,6 +27,6 @@ namespace ElectroShop1.Models
         public int ModelNumber { get; set;}
 
         [Required]
-        public int CategoryID { get; set; }
+        public int CategoryId { get; set; }
     }
 }

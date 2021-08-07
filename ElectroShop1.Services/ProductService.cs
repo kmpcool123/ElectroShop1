@@ -28,7 +28,7 @@ namespace ElectroShop1.Services
                     Manufacturer = model.Manufacturer,
                     Price = model.Price,
                     ModelNumber = model.ModelNumber,
-                    CategoryId = model.Category,
+                    CategoryId = model.CategoryId,
                     Msrp = model.Msrp,                  
                     CreatedUtc = DateTimeOffset.Now
                 };
@@ -49,7 +49,7 @@ namespace ElectroShop1.Services
                 var query =
                     ctx
                         .Products
-                        //.Where(e => e.OwnerId == _userId)
+                        //.Where(e => e.OwnerId == _userId) allows not registered users to see products(Allow annonymous not working?)
                         .Select(
                             e =>
                                 new ProductListItem
@@ -63,7 +63,8 @@ namespace ElectroShop1.Services
             }
         }
 
-        //possible use for getting products without authorization
+        //possible use for getting products without authorization (Allow annonymous not working fix later
+
         /*public IEnumerable<ProductListItem> GetAllProducts()
         {
             using (var ctx = new ApplicationDbContext())
@@ -104,7 +105,8 @@ namespace ElectroShop1.Services
                         ModelNumber = entity.ModelNumber,
                         Msrp = entity.Msrp,
                         Price = entity.Price,
-                        ModifiedUtc = entity.ModifiedUtc
+                        CategoryID = entity.Category.CategoryID,
+                        ModifiedUtc = entity.Modified
                     };
             }
         }
@@ -119,9 +121,12 @@ namespace ElectroShop1.Services
                         .Single(e => e.ProductId == model.ProductId && e.OwnerId == _userId);
 
                 entity.Name = model.Name;
+                entity.Manufacturer = model.Manufacturer;
+                entity.Msrp = model.Msrp;
+                entity.ModelNumber = model.ModelNumber;
                 entity.Description = model.Description;
                 entity.Price = model.Price;                                             
-                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+                entity.Modified = DateTimeOffset.UtcNow;
 
                 return ctx.SaveChanges() == 1;
             }

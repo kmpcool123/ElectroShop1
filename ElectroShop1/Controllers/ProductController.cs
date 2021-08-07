@@ -120,7 +120,7 @@ namespace ElectroShop1.Controllers
 
             service.DeleteProduct(id);
 
-            TempData["SaveResult"] = "Your product was deleted.";
+            TempData["SaveResult"] = "Your Product was deleted.";
 
             return RedirectToAction("Index");
         }
