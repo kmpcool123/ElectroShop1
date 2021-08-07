@@ -13,7 +13,7 @@ namespace ElectroShop1.Data
     {
         [Key]
         public int ProductId { get; set; }
-        [Required]
+        //[Required]
         public Guid OwnerId { get; set; }
         [Required]
         [MinLength(2, ErrorMessage = "A mininum of 2 characters needed.")]
@@ -31,10 +31,14 @@ namespace ElectroShop1.Data
         public decimal Msrp { get; set; }
 
         public int ModelNumber { get; set; }
+        [ForeignKey(nameof(Category))]
+
+        public int CategoryId { get; set; }
+        public virtual Category Category { get; set; }
 
         [Required]
         public DateTimeOffset CreatedUtc { get; set; }
 
-        public DateTimeOffset ModifiedUtc { get; set; }
+        public DateTimeOffset? ModifiedUtc { get; set; }
     }
 }

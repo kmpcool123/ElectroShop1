@@ -40,6 +40,7 @@ namespace ElectroShop1.Services
         }
 
         //Specific user
+        
         public IEnumerable<ProductListItem> GetProducts()
         {
             using (var ctx = new ApplicationDbContext())
@@ -47,7 +48,7 @@ namespace ElectroShop1.Services
                 var query =
                     ctx
                         .Products
-                        .Where(e => e.OwnerId == _userId)
+                        //.Where(e => e.OwnerId == _userId)
                         .Select(
                             e =>
                                 new ProductListItem
@@ -57,11 +58,12 @@ namespace ElectroShop1.Services
                                     Price = e.Price,
                                     CreatedUtc = e.CreatedUtc
                                 });
-                return query.ToArray();
+                return query.ToList();
             }
         }
 
-        /* public IEnumerable<ProductListItem> GetAllProducts()
+        //possible use for getting products without authorization
+        /*public IEnumerable<ProductListItem> GetAllProducts()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -79,8 +81,8 @@ namespace ElectroShop1.Services
                                 });
                 return query.ToArray();
             }
-        }
-        */
+        }*/
+        
         //Get product by Id
         public ProductDetail GetProductById(int id)
         {
@@ -103,6 +105,38 @@ namespace ElectroShop1.Services
                         Price = entity.Price,
                         ModifiedUtc = entity.ModifiedUtc
                     };
+            }
+        }
+
+        public bool UpdateProduct(ProductEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Products
+                        .Single(e => e.ProductId == model.ProductId && e.OwnerId == _userId);
+
+                entity.Name = model.Name;
+                entity.Description = model.Description;
+                entity.Price = model.Price;                                             
+                entity.ModifiedUtc = DateTimeOffset.UtcNow;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool DeleteProduct(int productId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Products
+                        .Single(e => e.ProductId == productId && e.OwnerId == _userId);
+
+                ctx.Products.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
             }
         }
     }

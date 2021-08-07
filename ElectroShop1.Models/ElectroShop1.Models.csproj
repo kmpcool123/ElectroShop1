@@ -54,8 +54,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Categories\CategoryCreate.cs" />
+    <Compile Include="Categories\CategoryDetail.cs" />
+    <Compile Include="Categories\CategoryEdit.cs" />
+    <Compile Include="Categories\CategoryListIem.cs" />
     <Compile Include="ProductCreate.cs" />
     <Compile Include="ProductDetail.cs" />
+    <Compile Include="ProductEdit.cs" />
     <Compile Include="ProductListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -63,5 +68,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
