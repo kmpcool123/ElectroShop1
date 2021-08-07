@@ -9,6 +9,7 @@ namespace ElectroShop1.Models.Categories
 {
     public class CategoryEdit
     {
+        public int CategoryId { get; set; }
         [Display(Name = "Name")]
         public string CategoryName { get; set; }
 

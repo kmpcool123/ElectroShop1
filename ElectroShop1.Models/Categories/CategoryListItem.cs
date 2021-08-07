@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace ElectroShop1.Models.Categories
 {
-    public class CategoryListIem
+    public class CategoryListItem
     {
-        [Display(Name = "Index")]
-        public int CategoryID { get; set; }
+        [Display(Name = "Category Id")]
+        public int CategoryId { get; set; }
 
         [Display(Name = "Category Name")]
         public string CategoryName { get; set; }

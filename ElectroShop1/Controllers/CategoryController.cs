@@ -1,4 +1,7 @@
 ﻿using ElectroShop1.Data;
+using ElectroShop1.Models.Categories;
+using ElectroShop1.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +38,7 @@ namespace ElectroShop1.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(CreateCategory model)
+        public ActionResult Create(CategoryCreate model)
         {
 
             if (!ModelState.IsValid)
@@ -81,7 +84,7 @@ namespace ElectroShop1.Controllers
 
             var OldModel = service.GetCategoryById(InputID);
 
-            var UpdadeModel = new EditCategory();
+            var UpdadeModel = new CategoryEdit();
 
             if (OldModel != null)
             {
@@ -94,14 +97,14 @@ namespace ElectroShop1.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int inputID, EditCategory model)
+        public ActionResult Edit(int inputID, CategoryEdit model)
         {
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
 
-            if (model.CategoryID != inputID)
+            if (model.CategoryId != inputID)
             {
                 ModelState.AddModelError("", "Input Id does not macth");
             }

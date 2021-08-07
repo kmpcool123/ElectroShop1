@@ -14,7 +14,7 @@ namespace ElectroShop1.Data
             
             // Primary Key
             [Key]
-            public int CategoryID { get; set; }
+            public int CategoryId { get; set; }
             [Required]
             [DisplayName("Category")]
             public string CategoryName { get; set; }

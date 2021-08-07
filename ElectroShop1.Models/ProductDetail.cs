@@ -21,7 +21,7 @@ namespace ElectroShop1.Models
         public int ModelNumber { get; set; }
 
         [Display(Name = "Category")]
-        public int CategoryID { get; set; }
+        public int CategoryId { get; set; }
 
         [Display(Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }

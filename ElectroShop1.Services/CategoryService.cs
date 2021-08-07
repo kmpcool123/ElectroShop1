@@ -1,4 +1,5 @@
 ﻿using ElectroShop1.Data;
+using ElectroShop1.Models.Categories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,25 +33,25 @@ namespace ElectroShop1.Services
             {
                 _category.Add(entity);
 
-                ctx.CarCategories.Add(entity);
+                ctx.Categories.Add(entity);
 
 
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public IEnumerable<CatListItem> GetCategories()
+        public IEnumerable<CategoryListItem> GetCategories()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                       ctx
 
-                      .CarCategories
+                      .Categories
                       .Select(e =>
-                      new CatListItem
+                      new CategoryListItem
                       {
-                          CategoryID = e.CategoryID,
+                          CategoryId = e.CategoryId,
                           CategoryName = e.CategoryName
 
                       });
@@ -61,44 +62,41 @@ namespace ElectroShop1.Services
         }
 
 
-        public bool UpdateCategory(EditCategory model)
+        public bool UpdateCategory(CategoryEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                      ctx
 
-                     .CarCategories
+                     .Categories
 
-                     .Single(e => e.CategoryID == e.CategoryID);
+                     .Single(e => e.CategoryId == e.CategoryId);
 
                 entity.CategoryName = model.CategoryName;
-                entity.Description = model.Description;
-                entity.AdminM = model.AdminM;
+                entity.Description = model.Description;               
                 entity.Modified = DateTimeOffset.Now;
 
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public DetailCategory GetCategoryById(int categoryID)
+        public CategoryDetail GetCategoryById(int categoryID)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                       ctx
 
-                      .CarCategories
+                      .Categories
 
-                      .Single(e => e.CategoryID == categoryID);
+                      .Single(e => e.CategoryId == categoryID);
                 return
-                      new DetailCategory
+                      new CategoryDetail
                       {
-                          CategoryID = entity.CategoryID,
+                          CategoryId = entity.CategoryId,
                           CategoryName = entity.CategoryName,
-                          Description = entity.Description,
-                          AdminC = entity.AdminC,
-                          AdminM = entity.AdminM,
+                          Description = entity.Description,                          
                           CreatedUtc = DateTimeOffset.UtcNow,
                           ModifiedUtc = DateTimeOffset.UtcNow
 
@@ -114,10 +112,10 @@ namespace ElectroShop1.Services
                 var entity =
                       ctx
 
-                      .CarCategories
-                      .Single(e => e.CategoryID == categoryID);
+                      .Categories
+                      .Single(e => e.CategoryId == categoryID);
 
-                ctx.CarCategories.Remove(entity);
+                ctx.Categories.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
             }

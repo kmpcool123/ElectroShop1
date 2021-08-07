@@ -105,7 +105,7 @@ namespace ElectroShop1.Services
                         ModelNumber = entity.ModelNumber,
                         Msrp = entity.Msrp,
                         Price = entity.Price,
-                        CategoryID = entity.Category.CategoryID,
+                        CategoryId = entity.Category.CategoryId,
                         ModifiedUtc = entity.Modified
                     };
             }

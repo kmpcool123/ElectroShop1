@@ -15,7 +15,9 @@ namespace ElectroShop1.Models
 
         public decimal Price { get; set; }
 
-       
+        [Display(Name = "Category")]
+        public int CategoryId { get; set; }
+
         [Display(Name = "Created")]
         public DateTimeOffset CreatedUtc { get; set; }
     }
